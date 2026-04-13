@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shudhanshu Mishra Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 
@@ -14,7 +17,7 @@
 
 <nav class="navbar">
 
-<h2 class="logo">Shudhanshu</h2>
+<h2 class="logo">My portfolio</h2>
 
 <ul>
 
@@ -36,18 +39,18 @@
 
 <div class="hero-text">
 
+<p class="eyebrow">Full Stack Developer</p>
 <h1>Hi, I'm <span>Shudhanshu Mishra</span></h1>
 
 <p>I am a <span id="typing"></span></p>
 
 <p class="hero-desc">
-Passionate Full Stack Developer building modern web apps.
+I build responsive web experiences with clean UI, backend logic, and a focus on practical user-friendly products.
 </p>
 
 <div class="social-links">
 
-<a href="https://github.com/shudhanshu725">GitHub</a>
-<a href="#">LinkedIn</a>
+<a href="https://github.com/shudhanshu725" target="_blank" rel="noopener noreferrer">GitHub</a>
 <a href="mailto:shudhanshu.webdev23@gmail.com">Email</a>
 
 </div>
@@ -72,9 +75,8 @@ Passionate Full Stack Developer building modern web apps.
 
 <h2>About Me</h2>
 
-<p>
-CSE student passionate about building web applications
-using JavaScript, Node.js and MongoDB.
+<p class="section-copy">
+CSE student focused on building modern web applications with JavaScript, Node.js, Express, and MongoDB. I enjoy turning ideas into clean, responsive interfaces and backend systems that solve real problems.
 </p>
 
 </section>
@@ -84,42 +86,51 @@ using JavaScript, Node.js and MongoDB.
 
 <h2>Skills</h2>
 
-<div class="skill">
+<div class="skills-grid">
 
-<p>HTML</p>
-<div class="progress">
-<div class="progress-bar html"></div>
+<article class="skill-card">
+<span class="skill-icon">01</span>
+<h3>HTML</h3>
+<p>Semantic structure for clean, accessible page layouts.</p>
+<div class="skill-tags">
+<span>Forms</span>
+<span>SEO Basics</span>
+<span>Accessibility</span>
 </div>
+</article>
 
+<article class="skill-card">
+<span class="skill-icon">02</span>
+<h3>CSS</h3>
+<p>Responsive styling with polished layouts, spacing, and motion.</p>
+<div class="skill-tags">
+<span>Flexbox</span>
+<span>Grid</span>
+<span>Animations</span>
 </div>
+</article>
 
-
-<div class="skill">
-
-<p>CSS</p>
-<div class="progress">
-<div class="progress-bar css"></div>
+<article class="skill-card">
+<span class="skill-icon">03</span>
+<h3>JavaScript</h3>
+<p>Interactive frontend experiences and dynamic UI behavior.</p>
+<div class="skill-tags">
+<span>DOM</span>
+<span>APIs</span>
+<span>ES6+</span>
 </div>
+</article>
 
+<article class="skill-card">
+<span class="skill-icon">04</span>
+<h3>Node.js</h3>
+<p>Backend logic, APIs, and full stack app functionality.</p>
+<div class="skill-tags">
+<span>Express</span>
+<span>REST</span>
+<span>MongoDB</span>
 </div>
-
-
-<div class="skill">
-
-<p>JavaScript</p>
-<div class="progress">
-<div class="progress-bar js"></div>
-</div>
-
-</div>
-
-
-<div class="skill">
-
-<p>Node.js</p>
-<div class="progress">
-<div class="progress-bar node"></div>
-</div>
+</article>
 
 </div>
 
@@ -130,6 +141,10 @@ using JavaScript, Node.js and MongoDB.
 
 <h2>Projects</h2>
 
+<p class="section-copy">
+Selected work pulled from my GitHub, focused on practical builds and full stack learning.
+</p>
+
 <div id="project-container"></div>
 
 </section>
@@ -138,6 +153,10 @@ using JavaScript, Node.js and MongoDB.
 <section id="contact">
 
 <h2>Contact</h2>
+
+<p class="section-copy">
+Have an opportunity, project idea, or collaboration in mind? Send me a message.
+</p>
 
 <form id="contactForm">
 
@@ -149,6 +168,8 @@ using JavaScript, Node.js and MongoDB.
 
 <button type="submit">Send</button>
 
+<p id="form-status" class="form-status" aria-live="polite"></p>
+
 </form>
 
 </section>
@@ -156,7 +177,7 @@ using JavaScript, Node.js and MongoDB.
 
 <footer>
 
-<p>© 2026 Shudhanshu Mishra</p>
+<p>&copy; 2026 Shudhanshu Mishra</p>
 
 </footer>
 
@@ -171,3 +192,4 @@ using JavaScript, Node.js and MongoDB.
 </body>
 
 </html>
+
