@@ -360,8 +360,35 @@ margin-bottom:12px;
 
 .card p{
 color:var(--muted);
-margin-bottom:22px;
+margin-bottom:18px;
+}
+
+.project-stack{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:16px;
+}
+
+.project-stack span{
+padding:8px 12px;
+border-radius:999px;
+background:rgba(68,199,244,0.1);
+border:1px solid rgba(68,199,244,0.16);
+color:#d9f7ff;
+font-size:13px;
+font-weight:700;
+}
+
+.project-highlights{
+margin:0 0 24px;
+padding-left:18px;
+color:var(--muted);
 flex:1;
+}
+
+.project-highlights li{
+margin-bottom:10px;
 }
 
 .project-link{

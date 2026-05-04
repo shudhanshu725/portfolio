@@ -19,50 +19,60 @@ move:{speed:2}
 
 ScrollReveal().reveal("section",{delay:200,distance:"40px",origin:"bottom"})
 
-const normalizeProjectName=value=>value.toLowerCase().replace(/[^a-z0-9]/g,"")
-
-const hiddenProjects=[
-"blood-bank-management-system",
-"blood-bank-mnagement-system",
-"college-mini-project",
-"college-mini-projects",
-"interactive-quiz-application",
-"eduswap-website",
-"shudhanshu725",
-"myportfolio",
-"portfolio",
-"qr-code-generator"
-].map(normalizeProjectName)
-
-const projectLinkOverrides={
-eduswapwebsite:"https://github.com/shudhanshu725/eduswapweb"
+const resumeProjects=[
+{
+title:"Edu Swap",
+stack:["React.js","Node.js","MongoDB"],
+summary:"AI-powered college resource exchange platform built to help students swap books and academic materials more easily.",
+highlights:[
+"Built user authentication, dynamic listings, and search functionality for smoother discovery and exchange.",
+"Worked in a GitHub-based team workflow with structured collaboration and version control."
+],
+link:"https://github.com/shudhanshu725/eduswapweb",
+linkLabel:"View Code"
+},
+{
+title:"Coin Toss Simulator",
+stack:["JavaScript","HTML","CSS"],
+summary:"Responsive web app that simulates coin tosses in real time with a playful, interactive UI.",
+highlights:[
+"Added toss history tracking and live statistics for heads and tails percentages.",
+"Improved the experience with smooth CSS flip animations and responsive layout behavior."
+],
+link:"https://github.com/shudhanshu725?tab=repositories",
+linkLabel:"View Code"
+},
+{
+title:"AnnSeva",
+stack:["React.js","Node.js","Express.js","MongoDB"],
+summary:"Food rescue web application connecting event organizers with leftover food to nearby NGOs.",
+highlights:[
+"Used Context API for global state management across donor and volunteer data flows.",
+"Built a dashboard with React Router to support food claims and donation activity."
+],
+link:"https://github.com/shudhanshu725?tab=repositories",
+linkLabel:"View Code"
 }
+]
 
 async function loadProjects(){
 const container=document.getElementById("project-container")
 
 try{
-const res=await fetch("https://api.github.com/users/shudhanshu725/repos")
-
-if(!res.ok){
-throw new Error("Unable to load projects")
-}
-
-const data=await res.json()
-
-data
-.filter(repo=>!hiddenProjects.includes(normalizeProjectName(repo.name)))
-.slice(0,6)
-.forEach(repo=>{
+resumeProjects.forEach(project=>{
 const div=document.createElement("div")
-const projectUrl=projectLinkOverrides[normalizeProjectName(repo.name)] || repo.html_url
+const stackMarkup=project.stack.map(item=>`<span>${item}</span>`).join("")
+const highlightsMarkup=project.highlights.map(item=>`<li>${item}</li>`).join("")
+const linkMarkup=project.link ? `<a class="project-link" href="${project.link}" target="_blank" rel="noopener noreferrer">${project.linkLabel || "View Project"}</a>` : ""
 
 div.className="card"
 
 div.innerHTML=`
-<h3>${repo.name}</h3>
-<p>${repo.description || "Project details coming soon."}</p>
-<a class="project-link" href="${projectUrl}" target="_blank" rel="noopener noreferrer">View Code</a>
+<h3>${project.title}</h3>
+<div class="project-stack">${stackMarkup}</div>
+<p>${project.summary}</p>
+<ul class="project-highlights">${highlightsMarkup}</ul>
+${linkMarkup}
 `
 
 container.appendChild(div)
@@ -78,7 +88,7 @@ glare:true,
 container.innerHTML=`
 <article class="card">
 <h3>Projects unavailable</h3>
-<p>I could not load GitHub projects right now. Please check back shortly.</p>
+<p>I could not load project details right now. Please check back shortly.</p>
 </article>
 `
 }
@@ -92,7 +102,7 @@ const submitButton=form.querySelector("button")
 const nameInput=document.getElementById("name")
 const emailInput=document.getElementById("email")
 const messageInput=document.getElementById("message")
-const apiBase=["localhost","127.0.0.1"].includes(window.location.hostname) ? "http://localhost:5000" : ""
+const apiBase=window.location.protocol==="file:" ? "http://localhost:5000" : ""
 
 form.addEventListener("submit",async e=>{
 e.preventDefault()
@@ -114,17 +124,18 @@ method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify(payload)
 })
+const data=await response.json().catch(()=>null)
 
 if(!response.ok){
-throw new Error("Message could not be sent")
+throw new Error(data?.message || "Message could not be sent")
 }
 
 form.reset()
 formStatus.classList.add("success")
-formStatus.textContent="Message sent successfully."
+formStatus.textContent=data?.message || "Message sent successfully."
 }catch(error){
 formStatus.classList.add("error")
-formStatus.textContent="Message failed to send. Please try again."
+formStatus.textContent=error.message || "Message failed to send. Please try again."
 }finally{
 submitButton.disabled=false
 submitButton.textContent="Send"
